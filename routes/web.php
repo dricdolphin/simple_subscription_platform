@@ -6,6 +6,7 @@ use App\Http\Controllers\API\WebsiteController;
 use App\Http\Controllers\API\PostController;
 use App\Http\Controllers\API\User_subscriptionController;
 use App\Http\Controllers\API\User_sent_postController;
+use App\Http\Controllers\SendMailController;
 use App\Models\Website;
 use App\Models\User;
 
@@ -28,7 +29,11 @@ Route::get('/user', [UserController::class, 'index']);
 Route::get('/website', [WebsiteController::class, 'index']);
 Route::get('/post', [PostController::class, 'index']);
 Route::get('/user_subscription', [User_subscriptionController::class, 'index']);
-Route::get('/send_emails', [User_subscriptionController::class, 'index']);
+
+Route::get('/sendemails/{post_id}', function ($post_id) {
+    $controller = new SendMailController(); // make sure to import the controller
+    $controller->send_mail(['post_id' => $post_id]);
+});
 
 
 Route::get('/newpost', function () {

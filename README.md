@@ -18,3 +18,8 @@ This code will require Sail and laravelcollective/html to be run
 
 Route::apiResource('process_new_post', PostController::class); -- Used to create new posts (can be called externally)
 Route::apiResource('process_new_user_subscription', UserSubscriptiontController::class); -- Used for user subscriptions
+
+## Sending e-mails
+
+You can send emails using the command send:sendemails {post_id} or by accessing /sendemails/{post_id}
+This will dispatch a Job an queue the email distribution
